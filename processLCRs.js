@@ -12,6 +12,8 @@ const {
     const filename = "./toProcess/2.0 all_licenses_should_be_activate_06052022.csv";
     const fileArray = await readFile(filename);
 
+    console.log({ employerId, chunkSize });
+
     const chunks = chunk(fileArray, chunkSize);
 
     const newFileArray = [];
@@ -20,10 +22,13 @@ const {
 
       const pks = chunk.map((item) => (item["1"] ? +item["1"] : 0));
 
+      console.log(pks);
+
       const employees = await searchEmployees(pks, employerId);
+      console.log(employees);
       const newChunk = chunk.map((ch) => {
         const idEmployeeNumber = employees.find(
-          (employee) => employee.PK_EMPLOYEE == ch["1"]
+          (employee) => parseInt(employee.PK_EMPLOYEE) == parseInt(ch["1"])
         );
 
         return {
