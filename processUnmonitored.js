@@ -23,7 +23,7 @@ const {
       const employees = await searchEmployees(pks, employerId);
       const newChunk = chunk.map((ch) => {
         const idEmployeeNumber = employees.find(
-          (employee) => employee.PK_EMPLOYEE === ch["1"]
+          (employee) => employee.PK_EMPLOYEE == ch["1"]
         );
 
         return {
