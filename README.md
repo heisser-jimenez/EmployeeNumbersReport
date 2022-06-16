@@ -17,3 +17,23 @@ DB_CONNECTION_STRING=10.21.100.191/PDB_ECTEST01
 
 ```
 Note: replace the connection string depending on the environment.
+
+# How to execute the processes ?
+
+From the command line inside the root folder, execute the command:
+
+```
+npm run start:lcr
+```
+
+This will generate a .csv file in the processed folder (This will be a copy of the file inside toProcess folder but with an aditional column at the end)
+
+---------------
+
+From the command line inside the root folder, execute the command:
+
+```
+npm run start:unmonitored
+```
+
+This will generate a .csv file in the processed folder (This will be a copy of the file inside toProcess folder but with an aditional column at the end)
