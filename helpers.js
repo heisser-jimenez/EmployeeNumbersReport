@@ -1,10 +1,24 @@
 const fs = require("fs");
 const csv = require("csv-parse");
 const knex = require("knex");
-const config = require("./knexfile.js");
 const ObjectsToCsv = require("objects-to-csv");
 
-const _db = knex(config);
+const {
+  CLIENT: client,
+  DB_USER: user,
+  DB_PASSWORD: password,
+  DB_CONNECTION_STRING: connectString,
+} = process.env;
+
+const _db = knex({
+  client,
+  connection: {
+    user,
+    password,
+    connectString,
+  },
+});
+
 const { parse } = csv;
 
 const writeFile = async (filename, fileArray) => {
